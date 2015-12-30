@@ -10,6 +10,13 @@
 	"data" : {}
 }
 
+或者
+
+{
+	"status": "ok",
+	"data" : []
+}
+
 请求成功时status是ok，其他不是ok的均请求失败
 ```
 
@@ -187,6 +194,68 @@
 			} // 分页信息
 		}, 
 	]
+}
+```
+
+-----
+
+***`赛事详情API`***
+
+```
+请求URL： http://www.ccjpp.xyz/details/getMatchDetail/
+请求方式：POST、GET
+```
+
+|接口参数|参数含义|数据类型|是否必传参数|附加说明|
+|---    |---    |---   |---       |---    |
+|match_id|赛事id|integer|是|必须传递赛事id，服务方会根据match_id查找详情|
+
+```
+返回接口数据说明：
+{
+	"status":"ok", //只有ok时才能请求到正确的数据
+	"data":{
+		"address":"上海", // 赛事举办地点，这里有多场且不在同一个地方该怎么定义？？？
+		"match_name":"赛事名称",
+		"match_status":"赛事状态【报名中】",
+		"img_urls":[
+			http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
+			http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
+		],
+		"start_time":"2015-12-11",
+		"end_time":"2015-12-20",
+		"places":[
+			{
+				"place_order_id":1,
+				"place_order_desc":"第一场",
+				"address":"黑超网吧",
+				"start_time":"2015-12-11 09:00",
+				"end_time":"2015-12-11 16:00",
+			}, // 比赛地点1
+			{
+				"place_order_id":2,
+				"place_order_desc":"第二场",
+				"address":"云海之家网吧",
+				"start_time":"2015-12-12 08:00",
+				"end_time":"2015-12-12 15:00",
+			}, // 比赛地点2
+			
+			...
+			
+			{
+				"place_order_id":100,
+				"place_order_desc":"第N场",
+				"address":"云海之家网吧",
+				"start_time":"2015-12-12 08:00",
+				"end_time":"2015-12-12 15:00",
+			}, // 比赛地点N
+		], // 比赛地点，数组格式，至少会有一个元素
+		"teams":[
+			"img_url":"http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111", // 参赛个人或者战队图像
+			"tag":"【xxx战队】|【个人】", // 区分个人还是团队
+			"total":123, 
+		], // 已报战队详情
+	}
 }
 ```
 
