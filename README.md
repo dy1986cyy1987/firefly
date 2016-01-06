@@ -10,40 +10,40 @@
 私钥：Mpks1$01098#AlsNj 
 
 以下用 `$private_key` 代替这个私钥值
-```	
-	
+```    
+    
 ### G2 Api或H5页面URL全局约定
-	
-	```
-	列表页URL：URI中包含lists
-	
-	详情页URL：URI中包含details
-	
-	动作URL：URI中包含activities
-	
-	分享URL：URI中包含share
-	
-	收藏URL：URI中包含collect
-	
-	用户信息APi: URI中包含user
-	```
+    
+    ```
+    列表页URL：URI中包含lists
+    
+    详情页URL：URI中包含details
+    
+    动作URL：URI中包含activities
+    
+    分享URL：URI中包含share
+    
+    收藏URL：URI中包含collect
+    
+    用户信息APi: URI中包含user
+    ```
 
 ### G3 TOKEN生成规则全局约定
-	
+    
 ```
-	`对所有的参数名及参数值进行校验`
-	
-	`TOKEN生成与请求参数的顺序有关，及时统一的参数name和参数值，但是顺序不一致，
-	 那么生成的token也不一致。例如请求参数m=act&param=123和param=123&m=act这两
-	 种请求的TOKEN是不一样的`
-	
-	`以m=act&param=123为例 
-	 TOKEN = md5(Mpks1$01098#AlsNj + m + act + param + 123) 
-	       = md5(Mpks1$01098#AlsNjmactparam123)`
+    `对所有的参数名及参数值进行校验`
+    
+    `TOKEN生成与请求参数的顺序有关，及时统一的参数name和参数值，但是顺序不一致，
+     那么生成的token也不一致。例如请求参数m=act&param=123和param=123&m=act这两
+     种请求的TOKEN是不一样的`
+    
+    `以m=act&param=123为例 
+     TOKEN = md5(Mpks1$01098#AlsNj + m + act + param + 123) 
+           = md5(Mpks1$01098#AlsNjmactparam123)`
 
-	`以param=123&m=act为例 
-	 TOKEN = md5(Mpks1$01098#AlsNj + param + 123 + m + act) 
-	       = md5(Mpks1$01098#AlsNjparam123mact)`
+    `以param=123&m=act为例 
+     TOKEN = md5(Mpks1$01098#AlsNj + param + 123 + m + act) 
+           = md5(Mpks1$01098#AlsNjparam123mact)`
 ```
 
 ### G4 所有接口返回格式全局约定:
@@ -51,24 +51,24 @@
 ```
 成功时返回数据格式(两种)：
 {
-	"status": 0,
-	"data" : {}
+    "status": 0,
+    "data" : {}
 }
 
 或者
 
 {
-	"status": 0,
-	"data" : []
+    "status": 0,
+    "data" : []
 }
 
 或者失败返回：
 {
-	"status" : $error_code, //非0
-	"error_msg" : {
-		// todo 错误信息json
-	},
-	"data" : {}
+    "status" : $error_code, //非0
+    "error_msg" : {
+        // todo 错误信息json
+    },
+    "data" : {}
 }
 
 请求成功时status是0，data为成功后数据；其他不是0的均请求均为错误码，对应得data为错误信息
@@ -94,41 +94,41 @@
 
 ```
 A 与`赛事、约战`直接相关API:
-	1. 赛事信息列表页API
-	2. 赛事报道列表页API
-	3. 赛事详情API
-	4. 比赛详情Page(H5)
-	5. 赛事分享Page(H5)
-	6. 赛事收藏API
-	7. 取消赛事收藏API
-	8. 赛事报道详情Page(H5)
-	9. 赛事报道收藏API
-	10. 取消赛报道事收藏API
-	11. 获取不服来战列表Api
-	12. 发起约战Api
-	13. 获取约战详情Api(根据约战id)
-	14. 加入约战Api
-	15. 收藏约战Api
-	16. 取消收藏约战Api
-	17. 分享约战H5页面
+    1. 赛事信息列表页API
+    2. 赛事报道列表页API
+    3. 赛事详情API
+    4. 比赛详情Page(H5)
+    5. 赛事分享Page(H5)
+    6. 赛事收藏API
+    7. 取消赛事收藏API
+    8. 赛事报道详情Page(H5)
+    9. 赛事报道收藏API
+    10. 取消赛报道事收藏API
+    11. 获取不服来战列表Api
+    12. 发起约战Api
+    13. 获取约战详情Api(根据约战id)
+    14. 加入约战Api
+    15. 收藏约战Api
+    16. 取消收藏约战Api
+    17. 分享约战H5页面
 
 B 与`赛事、约战`间接相关API: 
-	1. 赛事列表页筛选项API(客户端在使用A1 Api之前需要先拉取筛选条件)
-	2. 已报战队列表页筛选项API(B3中需要先行调用该接口值)
-	3. 查看已报战队列表API
-	4. 查看战队详情API
-	5. 加入战队API(入口战队详情页)
-	6. 查看战队申请列表API(入口在战队详情页)
-	7. 解散战队Api(只有`队长`才有权限解散)
-	8. 分享战队Page(H5页面，入口战队详情页)
-	9. 获取某一赛事的特定网吧列表Api(依赖赛事match_id)
-	10. 获取某一赛事的比赛场次列表Api(依赖赛事match_id)
-	11. 获取某一赛事的区服列表Api(依赖赛事match_id)
-	12. 创建战队Api
+    1. 赛事列表页筛选项API(客户端在使用A1 Api之前需要先拉取筛选条件)
+    2. 已报战队列表页筛选项API(B3中需要先行调用该接口值)
+    3. 查看已报战队列表API
+    4. 查看战队详情API
+    5. 加入战队API(入口战队详情页)
+    6. 查看战队申请列表API(入口在战队详情页)
+    7. 解散战队Api(只有`队长`才有权限解散)
+    8. 分享战队Page(H5页面，入口战队详情页)
+    9. 获取某一赛事的特定网吧列表Api(依赖赛事match_id)
+    10. 获取某一赛事的比赛场次列表Api(依赖赛事match_id)
+    11. 获取某一赛事的区服列表Api(依赖赛事match_id)
+    12. 创建战队Api
 
 C `报名Api`
-	1. 个人报名参加赛事Api
-	2. 团队报名参加赛事Api
+    1. 个人报名参加赛事Api
+    2. 团队报名参加赛事Api
 ```
 
 ### ***<公共Api>***
@@ -148,7 +148,7 @@ P4 获取筛选项中所有游戏类型Api
 
 请求方式：POST
 ```  
-	
+    
 |接口参数|参数含义|数据类型|是否必传参数|附加说明|
 |---    |---    |---   |---       |---    |
 |page|分页第几页|integer|否|默认1|
@@ -172,73 +172,73 @@ token = md5(Mpks1$01098#AlsNjrows11status1type1)
 ```
 接口成功时返回数据类型：
 {
-	"status":0,
-	"data":
-	{
-		"page_info":
-		{
-			"page":1,
-			"total":1001,
-			"rows":20,
-			"find":20
-		}, // 分页信息
-		
-		"docs": // 请求成功的数据
-		[
-			{
-				"match_id":1111, // 赛事id
-				"match_name":"Dota2世界冠军争夺赛第二场", // 赛事名称
-				"img_urls":[
-					http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
-					http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
-				], // 赛事图
-				"start_time":"2015-12-11", // 开始时间
-				"end_time":"2015-12-20",   // 结束时间
-				"status":"赛事已结束",       // 赛事状态
-				"status_id":3, // 赛事状态id,与status对应
-			}, 
-			
-			{
-				"match_id":4444,
-				"match_name":"LOL世界冠军争夺赛第二场",
-				"img_urls":[
-					http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
-					http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
-				], // 赛事图片
-				"start_time":"2015-12-11", // 开始时间
-				"end_time":"2015-12-20",   // 结束时间
-				"status":"赛事已结束",       // 赛事状态
-				"status_id":3, // 赛事状态id,与status对应
-				"publish_time":"2015-12-10", // 赛事发布时间
-			},
-			
-			...
-			
-			{
-				"match_id":2222,
-				"match_name":"DOTA世界冠军争夺赛第二场",
-				"img_urls":[
-					http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
-					http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
-				], // 赛事图片
-				"start_time":"2015-12-11", // 开始时间
-				"end_time":"2015-12-20",   // 结束时间
-				"status":"赛事已结束",       // 赛事状态
-				"status_id":3, // 赛事状态id,与status对应
-				"publish_time":"2015-12-10", // 赛事发布时间
-			},
-		]
-	}
+    "status":0,
+    "data":
+    {
+        "page_info":
+        {
+            "page":1,
+            "total":1001,
+            "rows":20,
+            "find":20
+        }, // 分页信息
+        
+        "docs": // 请求成功的数据
+        [
+            {
+                "match_id":1111, // 赛事id
+                "match_name":"Dota2世界冠军争夺赛第二场", // 赛事名称
+                "img_urls":[
+                    http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
+                    http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
+                ], // 赛事图
+                "start_time":"2015-12-11", // 开始时间
+                "end_time":"2015-12-20",   // 结束时间
+                "match_status":"赛事已结束",       // 赛事状态
+                "status_id":3, // 赛事状态id,与status对应
+            }, 
+            
+            {
+                "match_id":4444,
+                "match_name":"LOL世界冠军争夺赛第二场",
+                "img_urls":[
+                    http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
+                    http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
+                ], // 赛事图片
+                "start_time":"2015-12-11", // 开始时间
+                "end_time":"2015-12-20",   // 结束时间
+                "match_status":"赛事已结束",       // 赛事状态
+                "status_id":3, // 赛事状态id,与status对应
+                "publish_time":"2015-12-10", // 赛事发布时间
+            },
+            
+            ...
+            
+            {
+                "match_id":2222,
+                "match_name":"DOTA世界冠军争夺赛第二场",
+                "img_urls":[
+                    http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
+                    http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
+                ], // 赛事图片
+                "start_time":"2015-12-11", // 开始时间
+                "end_time":"2015-12-20",   // 结束时间
+                "match_status":"赛事已结束",       // 赛事状态
+                "status_id":3, // 赛事状态id,与status对应
+                "publish_time":"2015-12-10", // 赛事发布时间
+            },
+        ]
+    }
 }
 
 接口失败时返回数据格式：
 {
-	"status" : $error_code,
-	"error_msg" : {
-		"error" : "$error_msg"
-		"time"  : "2015-12-23 11:11:20"
-	},
-	"data" : {}
+    "status" : $error_code,
+    "error_msg" : {
+        "error" : "$error_msg"
+        "time"  : "2015-12-23 11:11:20"
+    },
+    "data" : {}
 }
 ```
 
@@ -253,7 +253,7 @@ token = md5(Mpks1$01098#AlsNjrows11status1type1)
 
 请求方式：POST
 ```  
-	
+    
 |接口参数|参数含义|数据类型|是否必传参数|附加说明|
 |---    |---    |---   |---       |---    |
 |page|分页第几页|integer|否|默认1|
@@ -270,68 +270,71 @@ token = md5(私钥 + 所有的参数$key + $value相加)
 ```
 接口成功时返回数据类型：
 {
-	"status":0,
-	"data":
-	{
-		"page_info":
-		{
-			"page":1,
-			"total":1001,
-			"rows":20,
-			"find":20
-		}, // 分页信息
-		
-		"docs":
-		[
-			{
-				"match_report_id":1111, // 赛事报道id
-				"match__report_name":"Dota2世界冠军争夺赛第二场", // 赛事报道名称
-				"img_urls":[
-					http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
-					http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
-				], // 赛事报道图片,可能没有，也可能一张，也可能多张
-				"time":"2015-12-11 14:22", // 开始时间
-				"view_count":1001, // 多少人看过
-				"recomment_count":54, // 评论数
-			}, 
-			
-			{
-				"match_report_id":2222, // 赛事报道id
-				"match__report_name":"Dota2世界冠军争夺赛第二场", // 赛事报道名称
-				"img_urls":[
-					http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
-					http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
-				], // 赛事报道图片,可能没有，也可能一张，也可能多张
-				"time":"2015-12-11 14:22", // 开始时间
-				"view_count":1001, // 多少人看过
-				"recomment_count":54, // 评论数
-			}, 	
-					
-			...
-			
-			{
-				"match_report_id":3333, // 赛事报道id
-				"match__report_name":"Dota2世界冠军争夺赛第二场", // 赛事报道名称
-				"img_urls":[
-					http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
-					http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
-				], // 赛事报道图片,可能没有，也可能一张，也可能多张
-				"time":"2015-12-11 14:22", // 开始时间
-				"view_count":1001, // 多少人看过
-				"recomment_count":54, // 评论数
-			}, 
-		]
-	}
+    "status":0,
+    "data":
+    {
+        "page_info":
+        {
+            "page":1,
+            "total":1001,
+            "rows":20,
+            "find":20
+        }, // 分页信息
+        
+        "docs":
+        [
+            {
+                "match_report_id":1111, // 赛事报道id
+                "match_report_name":"Dota2世界冠军争夺赛第二场", // 赛事报道名称
+                "desc" : "LOL比赛分赛", //副标题
+                "img_urls":[
+                    http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
+                    http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
+                ], // 赛事报道图片,可能没有，也可能一张，也可能多张
+                "time":"2015-12-11 14:22", // 开始时间
+                "view_count":1001, // 多少人看过
+                "comment_count":54, // 评论数
+            }, 
+            
+            {
+                "match_report_id":2222, // 赛事报道id
+                "match_report_name":"Dota2世界冠军争夺赛第二场", // 赛事报道名称
+                "desc" : "LOL比赛分赛", //副标题
+                "img_urls":[
+                    http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
+                    http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
+                ], // 赛事报道图片,可能没有，也可能一张，也可能多张
+                "time":"2015-12-11 14:22", // 开始时间
+                "view_count":1001, // 多少人看过
+                "comment_count":54, // 评论数
+            },     
+                    
+            ...
+            
+            {
+                "match_report_id":3333, // 赛事报道id
+                "match_report_name":"Dota2世界冠军争夺赛第二场", // 赛事报道名称
+                "desc" : "LOL比赛分赛", //副标题
+                "img_urls":[
+                    http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
+                    http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
+                ], // 赛事报道图片,可能没有，也可能一张，也可能多张
+                "time":"2015-12-11 14:22", // 开始时间
+                "view_count":1001, // 多少人看过
+                "comment_count":54, // 评论数
+            }, 
+        ]
+    }
 }
 
 接口失败时返回数据格式：
 {
-	"status" : $error_code,
-	"error_msg" : {
-		"error" : "$error_msg"
-		"time"  : "2015-12-23 11:11:20"
-	},
-	"data" : {}
+    "status" : $error_code,
+    "error_msg" : {
+        "error" : "$error_msg"
+        "time"  : "2015-12-23 11:11:20"
+    },
+    "data" : {}
 }
 ```
 
@@ -359,71 +362,71 @@ token = md5(私钥 + token以外的所有参数$key + $value相加)
 ```
 成功时返回接口数据格式：
 {
-	"status":0, //只有0时才能请求到正确的数据
-	"data":{
-		"city_name":"上海", // 赛事举办地点，这里有多场且不在同一个地方该怎么定义？？？
-		"match_name":"赛事名称",
-		"match_status":"赛事状态【报名中】",
-		"img_urls":[
-			http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
-			http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
-		],
-		"start_time":"2015-12-11",
-		"end_time":"2015-12-20",
-		"places":[
-			{
-				"match_order":1, // 场次
-				"place_order_desc":"第一场", // 场次描述
-				"netbar_name":"黑超网吧", // 网吧名字
-				"start_time":"2015-12-11 09:00",
-				"end_time":"2015-12-11 16:00",
-			}, // 比赛地点1
-			{
-				"match_order":2, // 场次
-				"place_order_desc":"第二场", // 场次描述
-				"netbar_name":"黑超网吧", // 网吧名字
-				"start_time":"2015-12-11 09:00",
-				"end_time":"2015-12-11 16:00",
-			}, // 比赛地点2
-			
-			...
-			
-			{
-				"match_order":100,
-				"place_order_desc":"第N场",
-				"address":"云海之家网吧",
-				"start_time":"2015-12-12 08:00",
-				"end_time":"2015-12-12 15:00",
-			}, // 比赛地点N
-		], // 比赛地点，数组格式，至少会有一个元素
-		
-		"members":[
-			"total_num":123, //该赛事已报名人数
-			"info":[
-				{
-					"member_icon":"$img_url", // 字符串 用户icon url
-					"user_id":"$user_id" // 用户id
-				},
-				
-				... 
-				
-				{
-					"member_icon":"$img_url", // 字符串 用户icon url
-					"user_id":"$user_id" // 用户id
-				},
-			]
-		], // 已报名人员列表(包含团队赛和个人赛报名所有人员)
-	}
+    "status":0, //只有0时才能请求到正确的数据
+    "data":{
+        "city_name":"上海", // 赛事举办地点，这里有多场且不在同一个地方该怎么定义？？？
+        "match_name":"赛事名称",
+        "match_status":"赛事状态【报名中】",
+        "img_urls":[
+            http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
+            http://img.bianfeng.com/a/hello/mmm_12332113.jpg?mktime=221111,
+        ],
+        "start_time":"2015-12-11",
+        "end_time":"2015-12-20",
+        "places":[
+            {
+                "match_order":1, // 场次
+                "place_order_desc":"第一场", // 场次描述
+                "netbar_name":"黑超网吧", // 网吧名字
+                "start_time":"2015-12-11 09:00",
+                "end_time":"2015-12-11 16:00",
+            }, // 比赛地点1
+            {
+                "match_order":2, // 场次
+                "place_order_desc":"第二场", // 场次描述
+                "netbar_name":"黑超网吧", // 网吧名字
+                "start_time":"2015-12-11 09:00",
+                "end_time":"2015-12-11 16:00",
+            }, // 比赛地点2
+            
+            ...
+            
+            {
+                "match_order":100,
+                "place_order_desc":"第N场",
+                "address":"云海之家网吧",
+                "start_time":"2015-12-12 08:00",
+                "end_time":"2015-12-12 15:00",
+            }, // 比赛地点N
+        ], // 比赛地点，数组格式，至少会有一个元素
+        
+        "members":[
+            "total_num":123, //该赛事已报名人数
+            "info":[
+                {
+                    "member_icon":"$img_url", // 字符串 用户icon url
+                    "user_id":"$user_id" // 用户id
+                },
+                
+                ... 
+                
+                {
+                    "member_icon":"$img_url", // 字符串 用户icon url
+                    "user_id":"$user_id" // 用户id
+                },
+            ]
+        ], // 已报名人员列表(包含团队赛和个人赛报名所有人员)
+    }
 }
 
 接口失败时返回数据格式：
 {
-	"status" : $error_code,
-	"error_msg" : {
-		"error" : "$error_msg"
-		"time"  : "2015-12-23 11:11:20"
-	},
-	"data" : {}
+    "status" : $error_code,
+    "error_msg" : {
+        "error" : "$error_msg"
+        "time"  : "2015-12-23 11:11:20"
+    },
+    "data" : {}
 }
 ```
 
@@ -445,7 +448,7 @@ PS：后台会为运营人员提供一个编辑工具箱，对于每一场比赛
 
 ```
 赛事分享不需要验证，客户端分享赛事Url:
-	
+    
 http://221.228.215.97:9020/share/match/{$match_id}
 
 其中$match_id为要分享的赛事的id
@@ -477,18 +480,18 @@ token = md5(Mpks1$01098#AlsNj + match_id11 + user_id22)
 ```
 接口请求成功时返回参数
 {
-	"status":0, 
-	"data":"$success_msg"
+    "status":0, 
+    "data":"$success_msg"
 }
 
 接口请求失败时返回参数
 {
-	"status": $error_code, // 非0错误码 
-	"error_msg" : {
-		"error" : "$error_msg"
-		"time"  : "2015-12-23 11:11:20"
-	},
-	"data":{}
+    "status": $error_code, // 非0错误码 
+    "error_msg" : {
+        "error" : "$error_msg"
+        "time"  : "2015-12-23 11:11:20"
+    },
+    "data":{}
 }
 ```
 
@@ -519,18 +522,18 @@ token = md5(Mpks1$01098#AlsNj + match_id11 + user_id22)
 ```
 接口请求成功时返回参数
 {
-	"status":0, 
-	"data":"$success_msg"
+    "status":0, 
+    "data":"$success_msg"
 }
 
 接口请求失败时返回参数
 {
-	"status": $error_code, // 非0错误码 
-	"error_msg" : {
-		"error" : "$error_msg"
-		"time"  : "2015-12-23 11:11:20"
-	},
-	"data":{}
+    "status": $error_code, // 非0错误码 
+    "error_msg" : {
+        "error" : "$error_msg"
+        "time"  : "2015-12-23 11:11:20"
+    },
+    "data":{}
 }
 ```
 
@@ -572,18 +575,18 @@ token = md5(Mpks1$01098#AlsNj + report_id11 + user_id22)
 ```
 接口请求成功时返回参数
 {
-	"status":0, 
-	"data":"$success_msg"
+    "status":0, 
+    "data":"$success_msg"
 }
 
 接口请求失败时返回参数
 {
-	"status": $error_code, // 非0错误码 
-	"error_msg" : {
-		"error" : "$error_msg"
-		"time"  : "2015-12-23 11:11:20"
-	},
-	"data":{}
+    "status": $error_code, // 非0错误码 
+    "error_msg" : {
+        "error" : "$error_msg"
+        "time"  : "2015-12-23 11:11:20"
+    },
+    "data":{}
 }
 ```
 
@@ -614,18 +617,18 @@ token = md5(Mpks1$01098#AlsNj + report_id11 + user_id22)
 ```
 接口请求成功时返回参数
 {
-	"status":0, 
-	"data":"$success_msg"
+    "status":0, 
+    "data":"$success_msg"
 }
 
 接口请求失败时返回参数
 {
-	"status": $error_code, // 非0错误码 
-	"error_msg" : {
-		"error" : "$error_msg"
-		"time"  : "2015-12-23 11:11:20"
-	},
-	"data":{}
+    "status": $error_code, // 非0错误码 
+    "error_msg" : {
+        "error" : "$error_msg"
+        "time"  : "2015-12-23 11:11:20"
+    },
+    "data":{}
 }
 ```
 
@@ -662,104 +665,104 @@ token = md5(Mpks1$01098#AlsNjrows20page2report_type1)
 ```
 Api请求成功返回数据：
 {
-	"status" : 0,
-	"data" : [
-		{
-			"base_info" : {
-				"id" : 1, //约战id
-				"logo_imgs" : [
-					"http://www.pic.com/p/ms/1.jpg",
-					...
-					"http://www.pic.com/p/ms/3.jpg",
-				], //约战logo，数组，至少有一个图片地址
-				"title" : "xxxx的约战title", //约战title
-				"netbar_id" : 1, //网吧id
-				"netbar_name" : "网吧名字",
-				"game_name" : "游戏名字",
-				"area_name" : "区名",
-				"server_name":"服名",
-				"time" : "12月16日 11：30", //约战时间
-				"type" : "线上", //线下线上id
-				"type_id" : 1, //线下线上id
-				"status" : "报名中", //报名状态
-				"status_id" : 1, //报名状态id
-			},
-			
-			"join_users" : {
-				"joined_num" : 3, //已加入约战人数
-				"limit" : 5, //最多5人参加约战
-				"users" : [
-					{
-						"user_id" : 1, //参加约战者id
-						"user_name" : "参加约战者姓名",
-						"user_icon" : "参加约战者的icon"
-					},
-					
-					...
-					
-					{
-						"user_id" : 1, //参加约战者id
-						"user_name" : "参加约战者姓名",
-						"user_icon" : "参加约战者的icon"
-					},	
-				]
-			}
-		},
-		
-		... 
-		
-		{
-			"base_info" : {
-				"id" : 1, //约战id
-				"logo_imgs" : [
-					"http://www.pic.com/p/ms/1.jpg",
-					...
-					"http://www.pic.com/p/ms/3.jpg",
-				], //约战logo，数组，至少有一个图片地址
-				"title" : "xxxx的约战title", //约战title
-				"netbar_id" : 1, //网吧id
-				"netbar_name" : "网吧名字",
-				"game_name" : "游戏名字",
-				"area_name" : "区名",
-				"server_name":"服名",
-				"time" : "12月16日 11：30", //约战时间
-				"type" : "线上", //线下线上id
-				"type_id" : 1, //线下线上id
-				"status" : "报名中", //报名状态
-				"status_id" : 1, //报名状态id
-			},
-			
-			"join_users" : {
-				"joined_num" : 3, //已加入约战人数
-				"limit" : 5, //最多5人参加约战
-				"users" : [
-					{
-						"user_id" : 1, //参加约战者id
-						"user_name" : "参加约战者姓名",
-						"user_icon" : "参加约战者的icon"
-					},
-					
-					...
-					
-					{
-						"user_id" : 1, //参加约战者id
-						"user_name" : "参加约战者姓名",
-						"user_icon" : "参加约战者的icon"
-					},	
-				]
-			}
-		}
-	]
+    "status" : 0,
+    "data" : [
+        {
+            "base_info" : {
+                "id" : 1, //约战id
+                "logo_imgs" : [
+                    "http://www.pic.com/p/ms/1.jpg",
+                    ...
+                    "http://www.pic.com/p/ms/3.jpg",
+                ], //约战logo，数组，至少有一个图片地址
+                "title" : "xxxx的约战title", //约战title
+                "netbar_id" : 1, //网吧id
+                "netbar_name" : "网吧名字",
+                "game_name" : "游戏名字",
+                "area_name" : "区名",
+                "server_name":"服名",
+                "time" : "12月16日 11：30", //约战时间
+                "type" : "线上", //线下线上id
+                "type_id" : 1, //线下线上id
+                "report_status" : "报名中", //报名状态
+                "status_id" : 1, //报名状态id
+            },
+            
+            "join_users" : {
+                "joined_num" : 3, //已加入约战人数
+                "limit" : 5, //最多5人参加约战
+                "users" : [
+                    {
+                        "user_id" : 1, //参加约战者id
+                        "user_name" : "参加约战者姓名",
+                        "user_icon" : "参加约战者的icon"
+                    },
+                    
+                    ...
+                    
+                    {
+                        "user_id" : 1, //参加约战者id
+                        "user_name" : "参加约战者姓名",
+                        "user_icon" : "参加约战者的icon"
+                    },    
+                ]
+            }
+        },
+        
+        ... 
+        
+        {
+            "base_info" : {
+                "id" : 1, //约战id
+                "logo_imgs" : [
+                    "http://www.pic.com/p/ms/1.jpg",
+                    ...
+                    "http://www.pic.com/p/ms/3.jpg",
+                ], //约战logo，数组，至少有一个图片地址
+                "title" : "xxxx的约战title", //约战title
+                "netbar_id" : 1, //网吧id
+                "netbar_name" : "网吧名字",
+                "game_name" : "游戏名字",
+                "area_name" : "区名",
+                "server_name":"服名",
+                "time" : "12月16日 11：30", //约战时间
+                "type" : "线上", //线下线上id
+                "type_id" : 1, //线下线上id
+                "report_status" : "报名中", //报名状态
+                "status_id" : 1, //报名状态id
+            },
+            
+            "join_users" : {
+                "joined_num" : 3, //已加入约战人数
+                "limit" : 5, //最多5人参加约战
+                "users" : [
+                    {
+                        "user_id" : 1, //参加约战者id
+                        "user_name" : "参加约战者姓名",
+                        "user_icon" : "参加约战者的icon"
+                    },
+                    
+                    ...
+                    
+                    {
+                        "user_id" : 1, //参加约战者id
+                        "user_name" : "参加约战者姓名",
+                        "user_icon" : "参加约战者的icon"
+                    },    
+                ]
+            }
+        }
+    ]
 }
 
 接口请求失败返回：
 {
-	"status": $error_code, // 非0错误码 
-	"error_msg" : {
-		"error" : "$error_msg"
-		"time"  : "2015-12-23 11:11:20"
-	},
-	"data":{}
+    "status": $error_code, // 非0错误码 
+    "error_msg" : {
+        "error" : "$error_msg"
+        "time"  : "2015-12-23 11:11:20"
+    },
+    "data":{}
 }
 ```
 
@@ -795,22 +798,22 @@ token = md5(Mpks1$01098#AlsNj + report_id11 + user_id22)
 ```
 约战Api请求成功数据格式：
 {
-	"status" : 0,
-	"data" : {
-		"datefight_id" : 1, //成功约战id,
-		"group_id" : 2, //约战群id
-		"msg" : "success", //成功提示信息
-	}
+    "status" : 0,
+    "data" : {
+        "datefight_id" : 1, //成功约战id,
+        "group_id" : 2, //约战群id
+        "msg" : "success", //成功提示信息
+    }
 }
 
 接口请求失败返回：
 {
-	"status": $error_code, // 非0错误码 
-	"error_msg" : {
-		"error" : "$error_msg"
-		"time"  : "2015-12-23 11:11:20"
-	},
-	"data":{}
+    "status": $error_code, // 非0错误码 
+    "error_msg" : {
+        "error" : "$error_msg"
+        "time"  : "2015-12-23 11:11:20"
+    },
+    "data":{}
 }
 ```
 
@@ -842,43 +845,43 @@ token = md5(Mpks1$01098#AlsNj + report_id11 + user_id22)
 ```
 Api请求成功时返回数据：
 {
-	"status" : 0,
-	"data" : {
-		"small_logo" : "",
-		"big_log" : "",
-		"status" : "报名中", //报名状态
-		"title" : "xxxx的约战", //约战title
-		"server" : "全服", //服务器
-		"game" : "英雄联盟", //游戏项目
-		"time" : "12月16日 11：30", //约战时间
-		"address" : "地点", //约战地址，即网吧地址
-		"intro" : "约战介绍",
-		"limit" : 50, //约战人数限制
-		"joined_num" : 15, //已加入约战人数
-		"members" : [
-			{
-				"user_name" : "张三",
-				"icon" : "http://www.xzj.com/pic/mgs/1.jpg"
-			},
-			
-			...
-			
-			{
-				"user_name" : "张三",
-				"icon" : "http://www.xzj.com/pic/mgs/1.jpg"
-			}
-		]
-	}
+    "status" : 0,
+    "data" : {
+        "small_logo" : "",
+        "big_log" : "",
+        "report_status" : "报名中", //报名状态
+        "title" : "xxxx的约战", //约战title
+        "server" : "全服", //服务器
+        "game" : "英雄联盟", //游戏项目
+        "time" : "12月16日 11：30", //约战时间
+        "address" : "地点", //约战地址，即网吧地址
+        "intro" : "约战介绍",
+        "limit" : 50, //约战人数限制
+        "joined_num" : 15, //已加入约战人数
+        "members" : [
+            {
+                "user_name" : "张三",
+                "icon" : "http://www.xzj.com/pic/mgs/1.jpg"
+            },
+            
+            ...
+            
+            {
+                "user_name" : "张三",
+                "icon" : "http://www.xzj.com/pic/mgs/1.jpg"
+            }
+        ]
+    }
 }
 
 请求失败时返回：
 {
-	"status": $error_code, // 非0错误码 
-	"error_msg" : {
-		"error" : "$error_msg"
-		"time"  : "2015-12-23 11:11:20"
-	},
-	"data":{}
+    "status": $error_code, // 非0错误码 
+    "error_msg" : {
+        "error" : "$error_msg"
+        "time"  : "2015-12-23 11:11:20"
+    },
+    "data":{}
 }
 ```
 
@@ -911,20 +914,20 @@ token = md5(Mpks1$01098#AlsNjuser_id1id2)
 ```
 Api请求成功时返回数据：
 {
-	"status" : 0,
-	"data" : {
-		"msg" : "success"
-	}
+    "status" : 0,
+    "data" : {
+        "msg" : "success"
+    }
 }
 
 请求失败时返回：
 {
-	"status": $error_code, // 非0错误码 
-	"error_msg" : {
-		"error" : "$error_msg"
-		"time"  : "2015-12-23 11:11:20"
-	},
-	"data":{}
+    "status": $error_code, // 非0错误码 
+    "error_msg" : {
+        "error" : "$error_msg"
+        "time"  : "2015-12-23 11:11:20"
+    },
+    "data":{}
 }
 ```
 
@@ -955,20 +958,20 @@ token = md5(Mpks1$01098#AlsNjuser_id1id2)
 ```
 Api请求成功时返回数据：
 {
-	"status" : 0,
-	"data" : {
-		"msg" : "success"
-	}
+    "status" : 0,
+    "data" : {
+        "msg" : "success"
+    }
 }
 
 请求失败时返回：
 {
-	"status": $error_code, // 非0错误码 
-	"error_msg" : {
-		"error" : "$error_msg"
-		"time"  : "2015-12-23 11:11:20"
-	},
-	"data":{}
+    "status": $error_code, // 非0错误码 
+    "error_msg" : {
+        "error" : "$error_msg"
+        "time"  : "2015-12-23 11:11:20"
+    },
+    "data":{}
 }
 ```
 
@@ -999,20 +1002,20 @@ token = md5(Mpks1$01098#AlsNjuser_id1id2)
 ```
 Api请求成功时返回数据：
 {
-	"status" : 0,
-	"data" : {
-		"msg" : "success"
-	}
+    "status" : 0,
+    "data" : {
+        "msg" : "success"
+    }
 }
 
 请求失败时返回：
 {
-	"status": $error_code, // 非0错误码 
-	"error_msg" : {
-		"error" : "$error_msg"
-		"time"  : "2015-12-23 11:11:20"
-	},
-	"data":{}
+    "status": $error_code, // 非0错误码 
+    "error_msg" : {
+        "error" : "$error_msg"
+        "time"  : "2015-12-23 11:11:20"
+    },
+    "data":{}
 }
 ```
 
@@ -1053,66 +1056,66 @@ token = md5(Mpks1$01098#AlsNj + 2016-11-23)
 ```
 接口请求成功时返回数据格式：
 {
-	"status" : 0,
-	"data"   : 
-	{
-		"games" : [
-			{
-				"game_name" : "dota2",
-				"game_id"   : 100 ,
-			},
-			
-			...
-			
-			{
-				"game_name" : 英雄联盟",
-				"game_id"   : 102 ,
-			},
-		], // 游戏
-		
-		"status" : [
-			{
-				"code" : 1,
-				"desc" : "报名中"
-			},
-			{
-				"code" : 2,
-				"desc" : "报名截止",
-			},
-			{
-				"code" : 3,
-				"desc" : "赛事结束",
-			},
-		], // 比赛状态
-		
-	   "address" : [
-	   	{
-	   		"city_id" : 11, 
-	   		"city_name" : "上海",
-	   	},
-	   	{
-	   		"city_id" : 12, 
-	   		"city_name" : "杭州",
-	   	},
-	   	
-	   	...
-	   	
-	   	{
-	   		"city_id" : 100, 
-	   		"city_name" : "北京",
-	   	}
-	   ] // 地区
-	}
+    "status" : 0,
+    "data"   : 
+    {
+        "games" : [
+            {
+                "game_name" : "dota2",
+                "game_id"   : 100 ,
+            },
+            
+            ...
+            
+            {
+                "game_name" : 英雄联盟",
+                "game_id"   : 102 ,
+            },
+        ], // 游戏
+        
+        "report_status" : [
+            {
+                "code" : 1,
+                "desc" : "报名中"
+            },
+            {
+                "code" : 2,
+                "desc" : "报名截止",
+            },
+            {
+                "code" : 3,
+                "desc" : "赛事结束",
+            },
+        ], // 比赛状态
+        
+       "address" : [
+           {
+               "city_id" : 11, 
+               "city_name" : "上海",
+           },
+           {
+               "city_id" : 12, 
+               "city_name" : "杭州",
+           },
+           
+           ...
+           
+           {
+               "city_id" : 100, 
+               "city_name" : "北京",
+           }
+       ] // 地区
+    }
 }
 
 失败时返回数据：
 {
-	"status": $error_code, // 非0错误码 
-	"error_msg" : {
-		"error" : "$error_msg"
-		"time"  : "2015-12-23 11:11:20"
-	},
-	"data":{}
+    "status": $error_code, // 非0错误码 
+    "error_msg" : {
+        "error" : "$error_msg"
+        "time"  : "2015-12-23 11:11:20"
+    },
+    "data":{}
 }
 ```
 
@@ -1145,30 +1148,30 @@ token = md5(私钥 + token以外的所有参数$key + $value相加)
 ```
 B2接口成功时返回数据：
 {
-	"status" : 0,
-	"data" : [
-		{
-			"netbar_id" : 11, //网吧id
-			"netbar_name" : "网吧名字",
-		},
-		
-		...
-		
-		{
-			"netbar_id" : 2222, //网吧id
-			"netbar_name" : "网吧名字",
-		},
-	]
+    "status" : 0,
+    "data" : [
+        {
+            "netbar_id" : 11, //网吧id
+            "netbar_name" : "网吧名字",
+        },
+        
+        ...
+        
+        {
+            "netbar_id" : 2222, //网吧id
+            "netbar_name" : "网吧名字",
+        },
+    ]
 }
 
 失败时返回数据：
 {
-	"status": $error_code, // 非0错误码 
-	"error_msg" : {
-		"error" : "$error_msg"
-		"time"  : "2015-12-23 11:11:20"
-	},
-	"data":{}
+    "status": $error_code, // 非0错误码 
+    "error_msg" : {
+        "error" : "$error_msg"
+        "time"  : "2015-12-23 11:11:20"
+    },
+    "data":{}
 }
 ```
 
@@ -1208,46 +1211,46 @@ token = md5(Mpks1$01098#AlsNj + match_id11 + 黑超网吧 + netbar_id + 11)
 ```
 B2接口成功时返回数据：
 {
-	"status" : 0,
-	"data" : [
-		{
-			"team_id" : 111, //战队id
-			"team_name" : "Kiss the Rain",
-			"owner" : "发起者名字",
-			"owner_id" : 12, //发起者user_id
-			"join_num" : 3, //当前战队已报名人数
-			"limit_num" : 5, //当前战队拟定报名人数上限
-			"match_id" : 1, // 赛事id
-			"match_order" : 1, //场次
-			"game_id" : 1, // 游戏id
-			"match_order_desc" : "第一场", //场次描述
-		}, 
-		
-		...
-		
-		{
-			"team_id" : 2222, //战队id
-			"team_name" : "Kiss the Rain N",
-			"owner" : "发起者名字",
-			"owner_id" : 3333, //发起者user_id
-			"join_num" : 3, //当前战队已报名人数
-			"limit_num" : 5, //当前战队拟定报名人数上限
-			"match_id" : 1, // 赛事id
-			"match_order" : 2, //场次
-			"game_id" : 1, // 游戏id
-			"match_order_desc" : "第二场", //场次描述
-		},
-	]
+    "status" : 0,
+    "data" : [
+        {
+            "team_id" : 111, //战队id
+            "team_name" : "Kiss the Rain",
+            "owner" : "发起者名字",
+            "owner_id" : 12, //发起者user_id
+            "join_num" : 3, //当前战队已报名人数
+            "limit_num" : 5, //当前战队拟定报名人数上限
+            "match_id" : 1, // 赛事id
+            "match_order" : 1, //场次
+            "game_id" : 1, // 游戏id
+            "match_order_desc" : "第一场", //场次描述
+        }, 
+        
+        ...
+        
+        {
+            "team_id" : 2222, //战队id
+            "team_name" : "Kiss the Rain N",
+            "owner" : "发起者名字",
+            "owner_id" : 3333, //发起者user_id
+            "join_num" : 3, //当前战队已报名人数
+            "limit_num" : 5, //当前战队拟定报名人数上限
+            "match_id" : 1, // 赛事id
+            "match_order" : 2, //场次
+            "game_id" : 1, // 游戏id
+            "match_order_desc" : "第二场", //场次描述
+        },
+    ]
 }
 
 失败时返回数据：
 {
-	"status": $error_code, // 非0错误码 
-	"error_msg" : {
-		"error" : "$error_msg"
-		"time"  : "2015-12-23 11:11:20"
-	},
-	"data":{}
+    "status": $error_code, // 非0错误码 
+    "error_msg" : {
+        "error" : "$error_msg"
+        "time"  : "2015-12-23 11:11:20"
+    },
+    "data":{}
 }
 ```
 
@@ -1277,60 +1280,60 @@ token = md5($private_key + team_id + $team_id)
 ```
 接口请求成功时返回数据格式：
 {
-	"status" : 0,
-	"data" : {
-		"team_name" : "战队名字",
-		"team_id" : 1, // 战队id
-		"match_lists" : [
-			{
-				"city_id" : 11, //城市id
-				"city_name" : "上海", //城市名字
-				"match_name" : "比赛名称1",
-				"match_order" : 1, // 比赛场次 integert
-				"time" : "2015-12-31", //比赛时间
-				"match_address" : "比赛网吧名称"
-			},
-			
-			... 
-			
-			{
-				"city_id" : 11, //城市id
-				"city_name" : "上海", //城市名字
-				"match_name" : "比赛名称1",
-				"match_order" : 2, // 比赛场次 integert
-				"time" : "2015-12-31", //比赛时间
-				"match_address" : "比赛网吧名称"
-			}
-		], // 已报赛事
-		
-		"team_members" : [
-			{
-				"icon_url"   : "http://xxxx.jpg", // 队员图像
-				"user_name"  : "xxx",  // 战队成员名字
-				"role_name"  : "队长", // 在战队中角色
-				"advantange" : "Carry", // 擅长位置 
-			},
-			
-			...
-			
-			{
-				"icon_url"   : "http://xxxx.jpg", // 队员图像
-				"user_name"  : "xxx",  // 战队成员名字
-				"role_name"  : "队长", // 在战队中角色
-				"advantange" : "Carry", // 擅长位置 
-			}
-		] // 队员名单
-	}
+    "status" : 0,
+    "data" : {
+        "team_name" : "战队名字",
+        "team_id" : 1, // 战队id
+        "match_lists" : [
+            {
+                "city_id" : 11, //城市id
+                "city_name" : "上海", //城市名字
+                "match_name" : "比赛名称1",
+                "match_order" : 1, // 比赛场次 integert
+                "time" : "2015-12-31", //比赛时间
+                "match_address" : "比赛网吧名称"
+            },
+            
+            ... 
+            
+            {
+                "city_id" : 11, //城市id
+                "city_name" : "上海", //城市名字
+                "match_name" : "比赛名称1",
+                "match_order" : 2, // 比赛场次 integert
+                "time" : "2015-12-31", //比赛时间
+                "match_address" : "比赛网吧名称"
+            }
+        ], // 已报赛事
+        
+        "team_members" : [
+            {
+                "icon_url"   : "http://xxxx.jpg", // 队员图像
+                "user_name"  : "xxx",  // 战队成员名字
+                "role_name"  : "队长", // 在战队中角色
+                "advantange" : "Carry", // 擅长位置 
+            },
+            
+            ...
+            
+            {
+                "icon_url"   : "http://xxxx.jpg", // 队员图像
+                "user_name"  : "xxx",  // 战队成员名字
+                "role_name"  : "队长", // 在战队中角色
+                "advantange" : "Carry", // 擅长位置 
+            }
+        ] // 队员名单
+    }
 }
 
 失败时返回数据：
 {
-	"status": $error_code, // 非0错误码 
-	"error_msg" : {
-		"error" : "$error_msg"
-		"time"  : "2015-12-23 11:11:20"
-	},
-	"data":{}
+    "status": $error_code, // 非0错误码 
+    "error_msg" : {
+        "error" : "$error_msg"
+        "time"  : "2015-12-23 11:11:20"
+    },
+    "data":{}
 }
 ```
 
@@ -1357,24 +1360,24 @@ token = md5($private_key + team_id + $team_id)
 如果请求参数顺序为team_id=1&user_id=2&identify_name=小明&identify_id={$身份证号},那么
 
 token = md5(Mpks1$01098#AlsNj + tema_id + 1+user_id 
-	     		+ 2 + identify_name + 小明+identify_id + {$身份证号})
+                 + 2 + identify_name + 小明+identify_id + {$身份证号})
 ```
 
 ```
 Api成功时返回数据格式如下：
 {
-	"status" : 0,
-	"data" : "$success_msg"
+    "status" : 0,
+    "data" : "$success_msg"
 }
 
 失败时返回数据：
 {
-	"status": $error_code, // 非0错误码 
-	"error_msg" : {
-		"error" : "$error_msg"
-		"time"  : "2015-12-23 11:11:20"
-	},
-	"data":{}
+    "status": $error_code, // 非0错误码 
+    "error_msg" : {
+        "error" : "$error_msg"
+        "time"  : "2015-12-23 11:11:20"
+    },
+    "data":{}
 }
 ```
 
@@ -1400,102 +1403,102 @@ Api成功时返回数据格式如下：
 
 ```
 如请求参数顺序是team_id=121&user_id=22, 那么
-	
+    
 TOKEN = md5(Mpks1$01098#AlsNjteam_id121user_id22)
 ```
 
 ```
 成功时接口返回数据格式：
 {
-	"status" : 0,
-	"data"   : {
-		"msg"  : "$success_msg", // 解散战队成功后提示
-		"uid"  : $user_id, // 谁解散的战队，一般为队长的user_id
-		"time" : "2015-12-24 13:23:40" // 解散战队时间
-	}
+    "status" : 0,
+    "data"   : {
+        "msg"  : "$success_msg", // 解散战队成功后提示
+        "uid"  : $user_id, // 谁解散的战队，一般为队长的user_id
+        "time" : "2015-12-24 13:23:40" // 解散战队时间
+    }
 }
 
 失败时返回：
 {
-	"status": $error_code, // 非0错误码 
-	"error_msg" : {
-		"error" : "$error_msg"
-		"time"  : "2015-12-23 11:11:20"
-	},
-	"data":{}
+    "status": $error_code, // 非0错误码 
+    "error_msg" : {
+        "error" : "$error_msg"
+        "time"  : "2015-12-23 11:11:20"
+    },
+    "data":{}
 }
 ```
 
 ---
 
 - ***B8 分享战队H5 Page***
-	
+    
 ```
 H5页面URL为：http://221.228.215.97:9020/share/fightTeam/{$fightTeamId}
-	
+    
 分享不需要Token验证，页面内容由运营人员通过后台工具编辑
 ```
-	
----	
+    
+---    
 
 - ***B9 获取某一赛事的特定网吧列表Api(依赖match_id)***
 
 ```
 Api描述：根据某一赛事的赛事id，即match_id 获取举办该赛事网吧列表
-	
+    
 Api地址：http://221.228.215.97:9020/lists/getNetbarListsByMatchId/
-	
+    
 请求方式：POST
 ```
-	
+    
 |接口参数|参数含义|数据类型|是否必传参数|附加说明|
 |---    |---    |---   |---       |---    |
 |match_id|赛事id|integer|是|赛事id，必传参数|
 |token|认证token|string|是|必须传递token值，对参数校验|
-	
+    
 ```
 TOKEN生成规则：
-	
+    
 例如请求的参数是match_id=10,则
 token = md5(Mpks1$01098#AlsNj + match_id + 10)
       = md5(Mpks1$01098#AlsNjmatch_id10)
 ```
-	
+    
 ```
 Api请求成功时数据格式：
 {
-	"status" : 0,
-	"data"   : [
-		{
-			"icon_url" : "{$网吧图片地址}",
-			"netbar_id" : 1, //网吧id，选中网吧时可能需要帮这个回传给服务端
-			"netbar_name" : "网鱼网咖", //网吧名字
-			"cost_min" : 10, //每小时最少消费金额，单位元
-			"cost_max" : 15, //每小时最多消费金额，单位元
-			"address" : "比赛详细地址",
-		},
-		
-		...
-		
-		{
-			"icon_url" : "{$网吧图片地址}",
-			"netbar_id" : 1, //网吧id，选中网吧时可能需要帮这个回传给服务端
-			"netbar_name" : "网鱼网咖", //网吧名字
-			"cost_min" : 10, //每小时最少消费金额，单位元
-			"cost_max" : 15, //每小时最多消费金额，单位元
-			"address" : "比赛详细地址",
-		},
-	]
+    "status" : 0,
+    "data"   : [
+        {
+            "icon_url" : "{$网吧图片地址}",
+            "netbar_id" : 1, //网吧id，选中网吧时可能需要帮这个回传给服务端
+            "netbar_name" : "网鱼网咖", //网吧名字
+            "cost_min" : 10, //每小时最少消费金额，单位元
+            "cost_max" : 15, //每小时最多消费金额，单位元
+            "address" : "比赛详细地址",
+        },
+        
+        ...
+        
+        {
+            "icon_url" : "{$网吧图片地址}",
+            "netbar_id" : 1, //网吧id，选中网吧时可能需要帮这个回传给服务端
+            "netbar_name" : "网鱼网咖", //网吧名字
+            "cost_min" : 10, //每小时最少消费金额，单位元
+            "cost_max" : 15, //每小时最多消费金额，单位元
+            "address" : "比赛详细地址",
+        },
+    ]
 }
-	
+    
 失败时返回：
 {
-	"status": $error_code, // 非0错误码 
-	"error_msg" : {
-		"error" : "$error_msg"
-		"time"  : "2015-12-23 11:11:20"
-	},
-	"data":{}
+    "status": $error_code, // 非0错误码 
+    "error_msg" : {
+        "error" : "$error_msg"
+        "time"  : "2015-12-23 11:11:20"
+    },
+    "data":{}
 }
 ```
 
@@ -1505,56 +1508,56 @@ Api请求成功时数据格式：
 
 ```
 Api描述：根据某一赛事的赛事id，即match_id 获取举办该赛事网吧列表
-	
+    
 Api地址：http://221.228.215.97:9020/lists/getNetbarListsByMatchId/
-	
+    
 请求方式：POST
 ```
-	
+    
 |接口参数|参数含义|数据类型|是否必传参数|附加说明|
 |---    |---    |---   |---       |---    |
 |match_id|赛事id|integer|是|赛事id，必传参数|
 |token|认证token|string|是|必须传递token值，对参数校验|
-	
+    
 ```
 TOKEN生成规则：
-	
+    
 例如请求的参数是match_id=10,则
 token = md5(Mpks1$01098#AlsNj + match_id + 10)
       = md5(Mpks1$01098#AlsNjmatch_id10)
 ```
-	
+    
 ```
 Api请求成功时数据格式：
 {
-	"status" : 0,
-	"data"   : [
-		{
-			"match_order" : 1, //场次id
-			"match_order_desc" : "第一场", //场次中文描述
-			"time" : "2015-12-12 14:00", //比赛时间
-			"address" : "比赛地址",
-		},
-		
-		...
-		
-		{
-			"match_order" : 3, //场次id
-			"match_order_desc" : "第三场", //场次中文描述
-			"time" : "2015-12-15 14:00", //比赛时间
-			"address" : "比赛地址",
-		}
-	]
+    "status" : 0,
+    "data"   : [
+        {
+            "match_order" : 1, //场次id
+            "match_order_desc" : "第一场", //场次中文描述
+            "time" : "2015-12-12 14:00", //比赛时间
+            "address" : "比赛地址",
+        },
+        
+        ...
+        
+        {
+            "match_order" : 3, //场次id
+            "match_order_desc" : "第三场", //场次中文描述
+            "time" : "2015-12-15 14:00", //比赛时间
+            "address" : "比赛地址",
+        }
+    ]
 }
-	
+    
 失败时返回：
 {
-	"status": $error_code, // 非0错误码 
-	"error_msg" : {
-		"error" : "$error_msg"
-		"time"  : "2015-12-23 11:11:20"
-	},
-	"data":{}
+    "status": $error_code, // 非0错误码 
+    "error_msg" : {
+        "error" : "$error_msg"
+        "time"  : "2015-12-23 11:11:20"
+    },
+    "data":{}
 }
 ```
 
@@ -1564,60 +1567,60 @@ Api请求成功时数据格式：
 
 ```
 Api描述：根据某一赛事的赛事id，即match_id 获取举办该赛事区和服列表
-	
+    
 Api地址：http://221.228.215.97:9020/lists/getAreaServiceListsByMatchId/
-	
+    
 请求方式：POST
 ```
-	
+    
 |接口参数|参数含义|数据类型|是否必传参数|附加说明|
 |---    |---    |---   |---       |---    |
 |match_id|赛事id|integer|是|赛事id，必传参数|
 |token|认证token|string|是|必须传递token值，对参数校验|
-		
+        
 ```
 TOKEN生成规则：
-	
+    
 例如请求的参数是match_id=10,则
 token = md5(Mpks1$01098#AlsNj + match_id + 10)
       = md5(Mpks1$01098#AlsNjmatch_id10)
 ```
-	
+    
 ```
 Api请求成功时数据格式：
 {
-	"status" : 0,
-	"data"   : [
-		{
-			"area_id" : 1, //区id
-			"area_name" : "{$区名}",
-			"group_id" : 2, //游戏分组id
-			"group_name" : "{$游戏分组名}",
-			"server_id" : 3, //服id
-			"server_name" : "{$服名}",
-		},
-		
-		...
-		
-		{
-			"area_id" : 3, //区id
-			"area_name" : "{$区名}",
-			"group_id" : 4, //游戏分组id
-			"group_name" : "{$游戏分组名}",
-			"server_id" : 5, //服id
-			"server_name" : "{$服名}",
-		}
-	]
+    "status" : 0,
+    "data"   : [
+        {
+            "area_id" : 1, //区id
+            "area_name" : "{$区名}",
+            "group_id" : 2, //游戏分组id
+            "group_name" : "{$游戏分组名}",
+            "server_id" : 3, //服id
+            "server_name" : "{$服名}",
+        },
+        
+        ...
+        
+        {
+            "area_id" : 3, //区id
+            "area_name" : "{$区名}",
+            "group_id" : 4, //游戏分组id
+            "group_name" : "{$游戏分组名}",
+            "server_id" : 5, //服id
+            "server_name" : "{$服名}",
+        }
+    ]
 }
-	
+    
 失败时返回：
 {
-	"status": $error_code, // 非0错误码 
-	"error_msg" : {
-		"error" : "$error_msg"
-		"time"  : "2015-12-23 11:11:20"
-	},
-	"data":{}
+    "status": $error_code, // 非0错误码 
+    "error_msg" : {
+        "error" : "$error_msg"
+        "time"  : "2015-12-23 11:11:20"
+    },
+    "data":{}
 }
 ```
 
@@ -1651,23 +1654,23 @@ Api地址：http://221.228.215.97:9020/activities/createFightTeam/
 ```
 创建战队成功时数据返回：
 {
-	"status" : 0,
-	"data" : {
-		"team_id" : 1, //成功创建战队的id
-		"match_id" : "$match_id", // 比赛id
-		"match_order" : "$match_order", //比赛场次
-		"msg" : "success",
-	}
+    "status" : 0,
+    "data" : {
+        "team_id" : 1, //成功创建战队的id
+        "match_id" : "$match_id", // 比赛id
+        "match_order" : "$match_order", //比赛场次
+        "msg" : "success",
+    }
 }
 
 失败返回：
 {
-	"status": $error_code, // 非0错误码 
-	"error_msg" : {
-		"error" : "$error_msg"
-		"time"  : "2015-12-23 11:11:20"
-	},
-	"data":{}
+    "status": $error_code, // 非0错误码 
+    "error_msg" : {
+        "error" : "$error_msg"
+        "time"  : "2015-12-23 11:11:20"
+    },
+    "data":{}
 }
 ```
 
@@ -1682,15 +1685,15 @@ token = md5($private_key + $key1 + $value1 + $key2 + $value2)
 ---
 
 - ***C1 个人报名赛事Api***
-	
+    
 ```
 个人报名参赛没有角色之分，因为只有一个人
 
 Api请求地址：http://221.228.215.97:9020/activities/personalApply/
-	
+    
 请求方式：POST
 ```
-	
+    
 |接口参数|参数含义|数据类型|是否必传参数|附加说明|
 |---    |---    |---   |---       |---    |
 |user_id|个人报名用户id|integer|是|报名者user_id必须由客户端传递|
@@ -1715,21 +1718,21 @@ token = md5($private_key + $key1 + $value1 + $key2 + $value2)
 ```
 Api请求成功时数据格式：
 {
-	"status" : 0,
-	"data"   : {
-		"apply_id" : 121, //报名id
-		"msg" : "success",
-	}
+    "status" : 0,
+    "data"   : {
+        "apply_id" : 121, //报名id
+        "msg" : "success",
+    }
 }
 
 失败时返回：
 {
-	"status": $error_code, // 非0错误码 
-	"error_msg" : {
-		"error" : "$error_msg"
-		"time"  : "2015-12-23 11:11:20"
-	},
-	"data":{}
+    "status": $error_code, // 非0错误码 
+    "error_msg" : {
+        "error" : "$error_msg"
+        "time"  : "2015-12-23 11:11:20"
+    },
+    "data":{}
 }
 ```
 
@@ -1773,23 +1776,23 @@ token = md5($private_key + $key1 + $value1 + $key2 + $value2)
 ```
 Api请求成功时数据格式：
 {
-	"status" : 0,
-	"data"   : {
-		"team_id" : 121, //战队id
-		"match_id" : 1, //赛事id
-		"match_order" : 1, //比赛场次
-		"msg" : "success",
-	}
+    "status" : 0,
+    "data"   : {
+        "team_id" : 121, //战队id
+        "match_id" : 1, //赛事id
+        "match_order" : 1, //比赛场次
+        "msg" : "success",
+    }
 }
 
 失败时返回：
 {
-	"status": $error_code, // 非0错误码 
-	"error_msg" : {
-		"error" : "$error_msg"
-		"time"  : "2015-12-23 11:11:20"
-	},
-	"data":{}
+    "status": $error_code, // 非0错误码 
+    "error_msg" : {
+        "error" : "$error_msg"
+        "time"  : "2015-12-23 11:11:20"
+    },
+    "data":{}
 }
 ```
 
@@ -1799,46 +1802,46 @@ Api请求成功时数据格式：
 
 ```
 Api描述：根据用户id，即user_id获取用户的信息
-	
+    
 Api地址：http://221.228.215.97:9020/user/getInfo/
-	
+    
 请求方式：POST
 ```
-	
+    
 |接口参数|参数含义|数据类型|是否必传参数|附加说明|
 |---    |---    |---   |---       |---    |
 |user_id|用户id|integer|是|用户id，必传参数|
 |token|认证token|string|是|必须传递token值，对参数校验|
-	
+    
 ```
 TOKEN生成规则：
-	
+    
 例如请求的参数是user_id=10,则
 token = md5(Mpks1$01098#AlsNj + user_id + 10)
       = md5(Mpks1$01098#AlsNjuser_id10)
 ```
-	
+    
 ```
 Api请求成功时数据格式：
 {
-	"status" : 0,
-	"data"   : {
-		"user_id" : 1,
-		"user_name" : "Map Reduce", //用户名
-		"mobile" : "13227893976", //手机号 字符串
-		"identify_name" : "{$认证名字}", //如身份证、护照
-		"identify_id" : "123456789123456789", //证件编号 字符串
- 	}
-}	
+    "status" : 0,
+    "data"   : {
+        "user_id" : 1,
+        "user_name" : "Map Reduce", //用户名
+        "mobile" : "13227893976", //手机号 字符串
+        "identify_name" : "{$认证名字}", //如身份证、护照
+        "identify_id" : "123456789123456789", //证件编号 字符串
+     }
+}    
 
 失败时返回：
 {
-	"status": $error_code, // 非0错误码 
-	"error_msg" : {
-		"error" : "$error_msg"
-		"time"  : "2015-12-23 11:11:20"
-	},
-	"data":{}
+    "status": $error_code, // 非0错误码 
+    "error_msg" : {
+        "error" : "$error_msg"
+        "time"  : "2015-12-23 11:11:20"
+    },
+    "data":{}
 }
 ```
 
@@ -1848,12 +1851,12 @@ Api请求成功时数据格式：
 
 ```
 Functions：获取支持的身份认证信息列表
-	
+    
 Api地址：http://221.228.215.97:9020/user/getIdentifyLists/
-	
+    
 请求方式：POST
 ```
-	
+    
 |接口参数|参数含义|数据类型|是否必传参数|附加说明|
 |---    |---    |---   |---       |---    |
 |type|身份类型id|integer|否|1：身份证 2：护照 3：港澳台签证 4：军人证|
@@ -1878,38 +1881,38 @@ Api请求成功时数据格式：
 
 <1> 传递type且type = [1 | 2 | 3 | 4]时
 {
-	"status" : 0,
-	"data"   : {
-		"type_id" : $type, // 请求方传递的参数type值
-		"type_name" : "$type_value", // 如身份证|护照 ...
- 	}
+    "status" : 0,
+    "data"   : {
+        "type_id" : $type, // 请求方传递的参数type值
+        "type_name" : "$type_value", // 如身份证|护照 ...
+     }
 }
 <2> 不传type参数时成功返回数据格式：
 {
-	"status" : 0,
-	"data" : [
-		{
-			"type_id" : 1,
-			"type_name" : "身份证",
-		},
-		
-		...
-		
-		{
-			"type_id" : 4,
-			"type_name" : "军人证",
-		}
-	]
+    "status" : 0,
+    "data" : [
+        {
+            "type_id" : 1,
+            "type_name" : "身份证",
+        },
+        
+        ...
+        
+        {
+            "type_id" : 4,
+            "type_name" : "军人证",
+        }
+    ]
 }
 
 失败时返回：
 {
-	"status": $error_code, // 非0错误码 
-	"error_msg" : {
-		"error" : "$error_msg"
-		"time"  : "2015-12-23 11:11:20"
-	},
-	"data":{}
+    "status": $error_code, // 非0错误码 
+    "error_msg" : {
+        "error" : "$error_msg"
+        "time"  : "2015-12-23 11:11:20"
+    },
+    "data":{}
 }
 ```
 
@@ -1940,30 +1943,30 @@ token = md5(Mpks1$01098#AlsNj + time + $time)
 ```
 Api请求成功时返回值：
 {
-	"status" : 0,
-	"data" : [
-		{
-			"game_id" : 1, //游戏id
-			"game_name" : "dota2", // 游戏名字
-		},
-		
-		...
-		
-		{
-			"game_id" : 100, //游戏id
-			"game_name" : "炉石传说", // 游戏名字
-		},
-	]
+    "status" : 0,
+    "data" : [
+        {
+            "game_id" : 1, //游戏id
+            "game_name" : "dota2", // 游戏名字
+        },
+        
+        ...
+        
+        {
+            "game_id" : 100, //游戏id
+            "game_name" : "炉石传说", // 游戏名字
+        },
+    ]
 }
 
 失败返回：
 {
-	"status": $error_code, // 非0错误码 
-	"error_msg" : {
-		"error" : "$error_msg"
-		"time"  : "2015-12-23 11:11:20"
-	},
-	"data":{}
+    "status": $error_code, // 非0错误码 
+    "error_msg" : {
+        "error" : "$error_msg"
+        "time"  : "2015-12-23 11:11:20"
+    },
+    "data":{}
 }
 ```
 
